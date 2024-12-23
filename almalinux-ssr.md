@@ -17,7 +17,7 @@ sysctl net.ipv4.tcp_congestion_control
 实例1：从远处复制文件到本地目录
 $scp xxxxx@40.xx.xxx.xxx:/home/xxxmin/xx.sh /home/xxx/
 安装软件包
-yum -y install wget chkconfig net-tools iptables-services chkconfig
+yum -y install wget chkconfig net-tools iptables-services
 下载Python2.7
 wget https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tgz
 tar -zxvf Python-2.7.18.tgz
