@@ -695,33 +695,6 @@ debian_View_user_connection_info(){
 		echo -e ${user_list_all}
 	fi
 }
-#centos_View_user_connection_info(){
-#	if [[ "${now_mode}" = "null" ]]; then
-#		now_mode="单端口" && user_total="1"
-#		IP_total=`netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp*' |awk '{print $4}' |sort -u |wc -l`
-#		user_port=`${jq_file} '.server_port' ${config_user_file}`
-#		user_IP=`netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp*' |grep "${user_port}" |awk '{print $5}' |awk -F ":" '{print $4}' |sort -u`
-#		user_IP_total=`netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp*' |grep "${user_port}" |awk '{print $5}' |awk -F ":" '{print $4}' |sort -u |wc -l`
-#		user_list_all="端口: ${Green_font_prefix}"${user_port}"${Font_color_suffix}, 链接IP总数: ${Green_font_prefix}"${user_IP_total}"${Font_color_suffix}, 当前链接IP: ${Green_font_prefix}"${user_IP}"${Font_color_suffix}\n"
-#		echo -e "当前模式: ${Green_font_prefix} "${now_mode}" ${Font_color_suffix}"
-#		echo -e ${user_list_all}
-#	else
-#		now_mode="多端口" && user_total=`${jq_file} '.port_password' ${config_user_file} | sed '$d' | sed "1d" | wc -l`
-#		IP_total=`netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp*' |awk '{print $4}' |sort -u |wc -l`
-#		user_list_all=""
-#		user_id=0
-#		for((integer = 1; integer <= ${user_total}; integer++))
-#		do
-#			user_port=`${jq_file} '.port_password' ${config_user_file} | sed '$d' | sed "1d" | awk -F ":" '{print $1}' | sed -n "${integer}p" | perl -e 'while($_=<>){ /\"(.*)\"/; print $1;}'`
-#			user_IP=`netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp*' |grep "${user_port}" |awk '{print $5}' |awk -F ":" '{print $4}' |sort -u`
-#			user_IP_total=`netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp*' |grep "${user_port}" |awk '{print $5}' |awk -F ":" '{print $4}' |sort -u |wc -l`
-#			user_id=$[$user_id+1]
-#			user_list_all=${user_list_all}"端口: ${Green_font_prefix}"${user_port}"${Font_color_suffix}, 链接IP总数: ${Green_font_prefix}"${user_IP_total}"${Font_color_suffix}, 当前链接IP: ${Green_font_prefix}"${user_IP}"${Font_color_suffix}\n"
-#		done
-#		echo -e "当前模式: ${Green_font_prefix} "${now_mode}" ${Font_color_suffix} ，用户总数: ${Green_font_prefix} "${user_total}" ${Font_color_suffix} ，链接IP总数: ${Green_font_prefix} "${IP_total}" ${Font_color_suffix} "
-#		echo -e ${user_list_all}
-#	fi
-#}
 centos_View_user_connection_info(){
     if [[ "${now_mode}" = "null" ]]; then
         now_mode="单端口" && user_total="1"
