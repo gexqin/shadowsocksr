@@ -698,7 +698,7 @@ debian_View_user_connection_info(){
 centos_View_user_connection_info(){
 	if [[ "${now_mode}" = "null" ]]; then
 		now_mode="单端口" && user_total="1"
-		IP_total=`netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp' | grep '::ffff:' |awk '{print $4}' |sort -u |wc -l`
+		IP_total=`netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp*' | grep '::ffff:' |awk '{print $4}' |sort -u |wc -l`
 		user_port=`${jq_file} '.server_port' ${config_user_file}`
 		user_IP=`netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp' |grep "${user_port}" | grep '::ffff:' |awk '{print $5}' |awk -F ":" '{print $4}' |sort -u`
 		user_IP_total=`netstat -anp |grep 'ESTABLISHED' |grep 'python' |grep 'tcp' |grep "${user_port}" | grep '::ffff:' |awk '{print $5}' |awk -F ":" '{print $4}' |sort -u |wc -l`
